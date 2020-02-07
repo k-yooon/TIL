@@ -1,1 +1,3 @@
-# TIL(Today I Learned)
+# TIL
+
+### 그때그때 공부한 내용 정리!
