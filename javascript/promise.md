@@ -6,9 +6,7 @@
 - 프로미스 메서드를 호출할 때 콜백 함수의 인사로 resolve, reject에 접근 가능
 
 ```javascript
-new Promise(function (resolve, reject) {
-
-});
+new Promise(function(resolve, reject) {});
 ```
 
 ### Promise 상태
@@ -25,24 +23,26 @@ new Promise(function (resolve, reject) {
 ### 예제
 
 ```javascript
-const promise = new Promise( function(resolve, reject){
-  if(condition){
+const promise = new Promise(function(resolve, reject) {
+  if (condition) {
     resolve('성공');
   } else {
     reject('실패');
   }
 });
 
-promise.then(function(message) {
-  console.log(message);
-}).catch(function(error) {
-  console.error(error);
-});
+promise
+  .then(function(message) {
+    console.log(message);
+  })
+  .catch(function(error) {
+    console.error(error);
+  });
 ```
 
 ## Promise.all
 
-- 여러 개의 비동기 작업들이 존재하고 이들이 모두 완료됐을 때 작업을 진행하고 싶다면 Promise.all
+- 여러 개의 비동기 작업들이 존재하고 이들이 모두 완료됐을 때 작업을 진행하고 싶다면 Promise.all을 사용
 
 ### 예제
 
@@ -50,10 +50,10 @@ promise.then(function(message) {
 const promise1 = Promise.resolve('성공1');
 const promise2 = Promise.resolve('성공2');
 Promise.all([promise1, promise2])
-  .then((result) => {
+  .then(result => {
     console.log(result);
   })
-  .catch((error) => {
+  .catch(error => {
     console.error(error);
   });
 ```
