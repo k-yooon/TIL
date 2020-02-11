@@ -5,7 +5,7 @@
 - 프로미스는 자바스크립트 비동기 처리에 사용되는 객체
 - 프로미스 메서드를 호출할 때 콜백 함수의 인사로 resolve, reject에 접근 가능
 
-```
+```javascript
 new Promise(function (resolve, reject) {
 
 });
@@ -24,7 +24,7 @@ new Promise(function (resolve, reject) {
 
 ### 예제
 
-```
+```javascript
 const promise = new Promise( function(resolve, reject){
   if(condition){
     resolve('성공');
@@ -46,7 +46,7 @@ promise.then(function(message) {
 
 ### 예제
 
-```
+```javascript
 const promise1 = Promise.resolve('성공1');
 const promise2 = Promise.resolve('성공2');
 Promise.all([promise1, promise2])
@@ -58,4 +58,4 @@ Promise.all([promise1, promise2])
   });
 ```
 
-##### reperence https://joshua1988.github.io/web-development/javascript/promise-for-beginners/
+###### reperence https://joshua1988.github.io/web-development/javascript/promise-for-beginners/

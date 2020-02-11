@@ -1,15 +1,15 @@
 # async / await
 
-## async / await는?
+## async / await란?
 
 - 콜백과 프로미스의 단점을 보완
 - 예외 처리는 try catch 이용
 
 ### 예제
 
-### callback
+- callback
 
-```
+```javascript
 function findAndSaveUser(Users){
   Users.findOne({}, function(err, user){
     if(err){
@@ -28,9 +28,9 @@ function findAndSaveUser(Users){
 }
 ```
 
-### 프로미스
+- 프로미스
 
-```
+```javascript
 function findAndSaveUser(Users){
   Users.findOne({})
     .then(function(user){
@@ -49,9 +49,9 @@ function findAndSaveUser(Users){
 }
 ```
 
-### async / await
+- async / await
 
-```
+```javascript
 async function findAndSaveUser(Users){
   try{
     let user = await Users.findOne({});
@@ -64,4 +64,4 @@ async function findAndSaveUser(Users){
 }
 ```
 
-##### reperence https://joshua1988.github.io/web-development/javascript/js-async-await/
+###### reperence https://joshua1988.github.io/web-development/javascript/js-async-await/
