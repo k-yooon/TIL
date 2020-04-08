@@ -13,6 +13,8 @@ const proxy = new Proxy(target, handler);
 
 ## handler
 ### set / get
+- get은 속성을 조회할 때 호출되는 함수
+- set은 속성에 값을 할당할 때 호출되는 함수
 ```javascript
 const myObj = {name : 'crong', changedValue : 0};
 const proxy = new Proxy(myObj, {
@@ -30,6 +32,22 @@ const proxy = new Proxy(myObj, {
 ```
     - proxy.name = 'js'시 자동 set 함수 호출
     - proxy.name시 자동 get 함수 호출
+#### set을 활용한 유효성 검사
+```javascript
+const person = new Proxy({}, {
+  set: function (obj, prop, value) {
+    const ageValidation = prop === 'age' && !Number.isInteger(value);
+    if (ageValidation) {
+      throw new TypeError('나이는 숫자로 입력해야 합니다.');
+    }
+    obj[prop] = value +'set!!';
+    return true;
+  }
+});
+
+person.age = 23;
+person.age = '스물셋'; // TypeError 나이틑 숫자로 입력해야 합니다.!!
+```
 
 ### construct
 ```javascript
@@ -44,3 +62,23 @@ console.log(new p(1, 2, 3).value); //10
 ```
     - new 연산자 실행시 자동 construct 함수 호출
   
+## deleteProperty
+- 객체 속성을 삭제할 때 호출되는 함수
+- 삭제하면 안되는 속성을 체크해서 삭제를 못하게 하는 등의 방식으로 사용
+
+```javascript
+const person = new Proxy({}, {
+  deleteProperty: function(target, prop) {
+    const isName = prop === 'name';
+    if(isName) delete target[prop];
+    return true;
+  }
+});
+
+person.name = 'sungin';
+person.age = 23;
+      
+delete person.name;
+delete person.age; // name 속성이 아니기때문에 삭제되지 않습니다.
+console.log(person); // {age: 23}
+```
