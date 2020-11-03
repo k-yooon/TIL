@@ -18,7 +18,7 @@ PUT v1-dqms_prod_step_doc-0003/_settings
 }
 
 ## reindex
-POST _reindex
+POST _reindex?wait_for_completion=false 
 {
   "source": {
     "index": "source-index"
@@ -41,3 +41,4 @@ PUT target-index/_settings
   "number_of_replicas": "2"
 }
 ```
+- wait_for_completion 옵션 추가 시, 비동기 실행
